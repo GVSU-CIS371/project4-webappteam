@@ -18,8 +18,5 @@ export const useProductStore = defineStore("ProductStore", {
     filterByRating(minRating: number){
       this.sortedProducts = this.products.filter((product) => product.data.rating >= minRating);
     },
-    resetDisplayedProducts() {
-      this.displayedProducts = this.resetDisplayedProducts;
-    },
   },
 });

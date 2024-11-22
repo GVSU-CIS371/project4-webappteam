@@ -5,16 +5,21 @@ import { initProducts } from "../data-init";
 export const useProductStore = defineStore("ProductStore", {
   state: () => ({
     products: [] as ProductDoc[],
+    sortedProducts: [] as ProductDoc[],
   }),
   actions: {
     init(){
       this.products = initProducts;
+      this.sortedProducts = this.products;
     },
     filterByCategory(category: string){
-      return this.products.filter((product) => product.data.category === category);
+      this.sortedProducts = this.products.filter((product) => product.data.category === category);
     },
     filterByRating(minRating: number){
-      return this.products.filter((product) => product.data.rating >= minRating);
-    }
-  }
+      this.sortedProducts = this.products.filter((product) => product.data.rating >= minRating);
+    },
+    resetDisplayedProducts() {
+      this.displayedProducts = this.resetDisplayedProducts;
+    },
+  },
 });
